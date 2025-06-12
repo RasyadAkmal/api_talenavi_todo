@@ -79,36 +79,7 @@ Proyek ini menerapkan pola arsitektur Controller-Service-Repository untuk memisa
 
 Skema Folder Utama
 
-app/
-|-- Http/
-|   |-- Controllers/
-|   |   |-- Todos/
-|   |   |   |-- Charts/
-|   |   |   |   `-- TodoChartController.php
-|   |   |   |-- ExportTodoController.php
-|   |   |   `-- TodoController.php
-|   |   `-- Controller.php
-|   |-- Requests/
-|   |   `-- Todos/
-|   |       |-- Charts/
-|   |       |   `-- DataTodoChartRequest.php
-|   |       |-- ExportTodoRequest.php
-|   |       `-- StoreTodoRequest.php
-|   `-- Resources/
-|       `-- Todos/
-|           `-- TodoResource.php
-|-- Models/
-|   |-- Todos/
-|   |   `-- Todo.php
-|   `-- User.php
-|-- Repositories/
-|   `-- Todos/
-|       `-- TodoRepository.php
-`-- Services/
-    `-- Todos/
-        |-- Charts/
-        |   `-- TodoChartService.php
-        `-- TodoService.php
+![image](https://github.com/user-attachments/assets/9a6fbfc3-fc5a-4496-bf3d-543523323424)
     
 **Penjelasan Arsitektur**
 
