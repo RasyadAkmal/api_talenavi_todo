@@ -72,3 +72,49 @@ Mengambil data agregat untuk ditampilkan dalam bentuk chart.
           - 'status': Untuk mendapatkan ringkasan jumlah tugas per status.
           - 'priority': Untuk mendapatkan ringkasan jumlah tugas per prioritas.
           - 'assignee': Untuk mendapatkan ringkasan detail tugas per assignee.
+
+**STRUKTUR APLIKASI**
+
+Proyek ini menerapkan pola arsitektur Controller-Service-Repository untuk memisahkan tanggung jawab dan membuat kode lebih bersih serta mudah dikelola.
+
+Skema Folder Utama
+
+app/
+|-- Http/
+|   |-- Controllers/
+|   |   `-- Todos/
+|   |       |-- Charts/
+|   |       |    `-- TodoChartController.php
+|   |       |-- TodoController.php
+|   |       `-- ExportTodoController.php
+|   |-- Requests/
+|   |   `-- Todos/
+|   |       |-- Charts/
+|   |       |    `-- DataTodoChartRequest.php
+|   |       |-- ExportTodoRequest.php
+|   |       `-- StoreTodoRequest.php
+|   `-- Resources/
+|   |   `-- Todos/
+|   |       `-- TodoResource.php
+|-- Models/
+|   `-- Todos/
+|   |   `-- TodoResource.php
+|-- Repositories/
+|   `-- TodoRepository.php
+`-- Services/
+|   `-- Todos/
+|   |   |-- Charts/
+|   |   |   `-- TodoChartService.php
+        `-- TodoService.php
+    
+**Penjelasan Arsitektur**
+
+Alur kerja untuk setiap request API adalah sebagai berikut: Request -> Controller -> Service -> Repository.
+
+Request: Bertanggung jawab penuh untuk validasi data yang masuk. Ini adalah gerbang pertama yang memastikan semua data yang dikirim oleh klien sesuai dengan aturan yang ditetapkan (misalnya, title wajib ada, due_date harus format tanggal, dll).
+
+Controller: Bertindak sebagai titik masuk (entry point) yang menerima HTTP request. Tugasnya hanya mengoordinasikan alur, yaitu memanggil Request untuk validasi, meneruskan data yang valid ke Service, dan mengembalikan response yang diterima dari Service ke klien. Controller tidak berisi business logic.
+
+Service: Merupakan inti dari business logic. Semua proses utama, manipulasi data, atau koordinasi dengan komponen lain terjadi di sini. Misalnya, TodoService berisi logika cara membuat data todo, dan ChartService berisi logika untuk memproses dan mengolah cache data chart.
+
+Repository: Satu-satunya lapisan yang bertanggung jawab untuk berkomunikasi dengan database. Semua query diisolasi di dalam Repository. Hal ini membuat membuat kode lebih mudah untuk diuji dan dimaintain.
