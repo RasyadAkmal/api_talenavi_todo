@@ -82,29 +82,32 @@ Skema Folder Utama
 app/
 |-- Http/
 |   |-- Controllers/
-|   |   `-- Todos/
-|   |       |-- Charts/
-|   |       |    `-- TodoChartController.php
-|   |       |-- TodoController.php
-|   |       `-- ExportTodoController.php
+|   |   |-- Todos/
+|   |   |   |-- Charts/
+|   |   |   |   `-- TodoChartController.php
+|   |   |   |-- ExportTodoController.php
+|   |   |   `-- TodoController.php
+|   |   `-- Controller.php
 |   |-- Requests/
 |   |   `-- Todos/
 |   |       |-- Charts/
-|   |       |    `-- DataTodoChartRequest.php
+|   |       |   `-- DataTodoChartRequest.php
 |   |       |-- ExportTodoRequest.php
 |   |       `-- StoreTodoRequest.php
 |   `-- Resources/
-|   |   `-- Todos/
-|   |       `-- TodoResource.php
+|       `-- Todos/
+|           `-- TodoResource.php
 |-- Models/
-|   `-- Todos/
-|   |   `-- TodoResource.php
+|   |-- Todos/
+|   |   `-- Todo.php
+|   `-- User.php
 |-- Repositories/
-|   `-- TodoRepository.php
-`-- Services/
 |   `-- Todos/
-|   |   |-- Charts/
-|   |   |   `-- TodoChartService.php
+|       `-- TodoRepository.php
+`-- Services/
+    `-- Todos/
+        |-- Charts/
+        |   `-- TodoChartService.php
         `-- TodoService.php
     
 **Penjelasan Arsitektur**
